@@ -1,6 +1,5 @@
 const items = [];
 
-
 class Item {
   /** construct an Item instance */
   constructor(name, price) {
@@ -17,6 +16,17 @@ class Item {
   /** Return item.self object {name:name, price:price} */
   static get(item) {
     return item.self;
+  }
+
+  /** Loop through items and if searchItem is in items return item 
+   * else return false */
+  static find(searchItem) {
+    for(let item of items){
+      if(item.name === searchItem) {
+        return item;
+      }
+    }
+    return false;
   }
 
 }
