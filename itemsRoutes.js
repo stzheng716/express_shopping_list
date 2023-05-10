@@ -3,8 +3,7 @@
 /** Routes for /items. */
 
 const express = require("express");
-const { isItemInList } = require("./middleware");
-
+const { isItemInList, validNewItem } = require("./middleware");
 const {items, Item} = require("./fakeDb");
 const router = new express.Router();
 
@@ -15,27 +14,36 @@ router.get("/", function(req, res) {
 });
 
 /** POST "/items": adds items (JSON) and returns it*/
-router.post("/", function(req, res) {
+router.post("/", validNewItem, function(req, res) {
   const newItem = new Item(req.body.name, req.body.price);
-
   Item.add(newItem);
+
   return res.json({added:newItem.self});
 });
 
 /** GET for specific item from list and return item as JSON. */
 router.get("/:name", isItemInList, function(req, res) {
   const item = Item.find(req.params.name)
+
   return res.json(item)
 });
 
-/** GET for specific item and return item as JSON. */
+/** PATCH for specific item and return udpated item as JSON. */
 router.patch("/:name", isItemInList, function(req, res) {
   const item = Item.find(req.params.name);
   item.name = req.body.name;
   item.price = req.body.price;
   console.log(item.self)
+
   return res.json({updated:item});
 });
+
+/** DELETE specific item and return confirmation  */
+router.delete("/:name", isItemInList, function(req,res) {
+  Item.delete(req.params.name);
+
+  return res.json({message:"Deleted"});
+})
 
 
 module.exports = router;

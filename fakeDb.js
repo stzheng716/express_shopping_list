@@ -18,12 +18,24 @@ class Item {
     return item.self;
   }
 
-  /** Loop through items and if searchItem is in items return item 
+  /** Loop through items and if searchItem is in items return item
    * else return false */
   static find(searchItem) {
     for(let item of items){
       if(item.name === searchItem) {
         return item;
+      }
+    }
+    return false;
+  }
+
+  /** Loop through items to match name; splices items array to remove
+   *  desired item
+   */
+  static delete(deleteItemName) {
+    for(let index=0; index<items.length; index++) {
+      if (items[index].name === deleteItemName) {
+        items.splice(index,1);
       }
     }
     return false;
