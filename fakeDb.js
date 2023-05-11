@@ -5,28 +5,30 @@ class Item {
   constructor(name, price) {
     this.name = name;
     this.price = price;
-    //TODO: don't use .self name it to something else
-    this.self = {name: name, price: price};
+
+    items.push(this)
   }
 
   /** Add item to items list */
   static add(item) {
-    items.push(item.self);
+    items.push(item);
   }
 
-  /** Return item.self object {name:name, price:price} */
+  static findAll(){
+    return items;
+  }
+
+  /** Return item object {name:name, price:price} */
   static get(item) {
-    return item.self;
+    return item;
   }
 
   /** Loop through items and if searchItem is in items return item
    * else return false */
   static find(searchItem) {
-    for(let item of items){
-      //TODO: array findindex, similar to filter
-      if(item.name === searchItem) {
-        return item;
-      }
+    const foundItem = items.find(item => item.name === searchItem)
+    if(foundItem){
+      return foundItem
     }
     return false;
   }
@@ -35,13 +37,12 @@ class Item {
    *  desired item
    */
   static delete(deleteItemName) {
-    for(let index=0; index<items.length; index++) {
-      if (items[index].name === deleteItemName) {
-        items.splice(index,1);
-      }
+    const index = items.findIndex(item => item.name === deleteItemName)
+    console.log("index number:", index)
+    if(index >= 0){
+      items.splice(index, 1);
     }
-    return false;
   }
-
 }
+
 module.exports = { items, Item };

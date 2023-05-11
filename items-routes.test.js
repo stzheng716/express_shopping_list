@@ -6,8 +6,7 @@ const app = require("./app");
 let {items, Item} = require("./fakeDb");
 
 let water = new Item("water", "13.99");
-//TODO: put patch item
-// let coke = {name:};
+let coke = {"name": "coke", "price":"12.99"};
 
 /** Add water Item before each test */
 beforeEach(function() {
@@ -24,10 +23,7 @@ describe("GET /items", function() {
   it("Gets all items", async function() {
     const resp = await request(app).get(`/items`);
 
-    expect(resp.body).toEqual({"items": [{"name":"water",
-                                          "price":"13.99"
-                                        }]
-                                      });
+    expect(resp.body).toEqual({"items": items});
   });
 });
 
@@ -36,7 +32,7 @@ describe("GET /items/:name", function() {
   it("Gets specific item", async function() {
     const resp = await request(app).get(`/items/water`);
 
-    expect(resp.body).toEqual({"name":"water", "price":"13.99"});
+    expect(resp.body).toEqual(water);
   });
 
   it("Responds with 404 if item not in items array", async function() {

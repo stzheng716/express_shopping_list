@@ -18,7 +18,7 @@ router.post("/", validNewItem, function(req, res) {
   const newItem = new Item(req.body.name, req.body.price);
   Item.add(newItem);
 
-  return res.json({added:newItem.self});
+  return res.json({added:newItem});
 });
 
 /** GET for specific item from list and return item as JSON. */
