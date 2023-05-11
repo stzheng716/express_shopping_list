@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">69.56% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>16/23</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">69.56% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>16/23</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -110,8 +110,7 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,19 +142,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -190,20 +188,19 @@ router.get("/:name", isItemInList, function(req, res) {
 });
 &nbsp;
 /** PATCH for specific item and return udpated item as JSON. */
-router.patch("/:name", isItemInList, <span class="fstat-no" title="function not covered" >fu</span>nction(req, res) {
-  const item = <span class="cstat-no" title="statement not covered" >Item.find(req.params.name);</span>
-<span class="cstat-no" title="statement not covered" >  item.name = req.body.name;</span>
-<span class="cstat-no" title="statement not covered" >  item.price = req.body.price;</span>
-<span class="cstat-no" title="statement not covered" >  console.log(item.self)</span>
+router.patch("/:name", isItemInList, validNewItem, function(req, res) {
+  const item = Item.find(req.params.name);
+  item.name = req.body.name;
+  item.price = req.body.price;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return res.json({updated:item});</span>
+  return res.json({updated:item});
 });
 &nbsp;
 /** DELETE specific item and return confirmation  */
-router.delete("/:name", isItemInList, <span class="fstat-no" title="function not covered" >fu</span>nction(req,res) {
-<span class="cstat-no" title="statement not covered" >  Item.delete(req.params.name);</span>
+router.delete("/:name", isItemInList, function(req,res) {
+  Item.delete(req.params.name);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return res.json({message:"Deleted"});</span>
+  return res.json({message:"Deleted"});
 })
 &nbsp;
 &nbsp;
@@ -214,7 +211,7 @@ module.exports = router;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-10T23:54:12.868Z
+                at 2023-05-11T00:50:11.013Z
             </div>
         <script src="prettify.js"></script>
         <script>

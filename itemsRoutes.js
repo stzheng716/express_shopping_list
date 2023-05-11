@@ -29,11 +29,10 @@ router.get("/:name", isItemInList, function(req, res) {
 });
 
 /** PATCH for specific item and return udpated item as JSON. */
-router.patch("/:name", isItemInList, function(req, res) {
+router.patch("/:name", isItemInList, validNewItem, function(req, res) {
   const item = Item.find(req.params.name);
   item.name = req.body.name;
   item.price = req.body.price;
-  console.log(item.self)
 
   return res.json({updated:item});
 });

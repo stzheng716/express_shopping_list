@@ -5,6 +5,7 @@ class Item {
   constructor(name, price) {
     this.name = name;
     this.price = price;
+    //TODO: don't use .self name it to something else
     this.self = {name: name, price: price};
   }
 
@@ -22,6 +23,7 @@ class Item {
    * else return false */
   static find(searchItem) {
     for(let item of items){
+      //TODO: array findindex, similar to filter
       if(item.name === searchItem) {
         return item;
       }
